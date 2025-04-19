@@ -1,0 +1,59 @@
+/* src/app/styles/Home.module.css */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.titleContainer {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.emphasis {
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+}
+
+.additionalInfo {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem 0;
+}
+
+.textarea {
+  width: 100%;
+  height: 100px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+}
+
+.searchButton {
+  background-color: #87CEFA;
+  color: #000;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.searchButton:hover {
+  background-color: #3498db;
+}

@@ -1,0 +1,28 @@
+.searchForm {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    max-width: 800px;
+    background-color: #d6eeff;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .formGroup label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .formGroup input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
