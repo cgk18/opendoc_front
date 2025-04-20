@@ -4,6 +4,9 @@ import Header from './components/Header';
 export const metadata = {
   title: 'OpenDoc - Find the Right Doctor',
   description: 'Doctor recommendation system',
+  icons: {
+    icon: '/favicon.svg', // Use SVG directly
+  },
 };
 
 export default function RootLayout({
@@ -15,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );

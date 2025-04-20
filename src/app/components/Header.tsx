@@ -1,10 +1,9 @@
-
+// src/app/components/Header.tsx
 "use client";
 
-import styles from './styles/Header.module.css';
-import Image from 'next/image';
 import Link from 'next/link';
-
+import styles from './styles/Header.module.css';
+import OpenDocLogo from './OpenDocLogo';
 
 export default function Header() {
   return (
@@ -13,13 +12,7 @@ export default function Header() {
         <Link href="/">
           <div className={styles.logoContainer}>
             <span className={styles.logoText}>OpenDoc</span>
-            {/* You'll need to create this logo file */}
-            <div className={styles.logoImage}>
-              <svg width="80" height="80" viewBox="0 0 80 80">
-                <circle cx="40" cy="40" r="35" fill="#87CEFA" />
-                <circle cx="40" cy="40" r="15" fill="#FFFFFF" />
-              </svg>
-            </div>
+            <OpenDocLogo width={120} height={60} />
           </div>
         </Link>
       </div>

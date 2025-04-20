@@ -1,0 +1,52 @@
+/* src/app/components/styles/Header.module.css */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #152033; /* Matching the navy background from your logo */
+    color: #fff;
+    width: 100%;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+  }
+  .logoText {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-style: italic;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: -1px;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  
+  .nav a:hover {
+    opacity: 0.8;
+  }
+  
+  .userIcon {
+    cursor: pointer;
+    margin-left: 1rem;
+  }

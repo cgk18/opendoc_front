@@ -1,0 +1,14 @@
+/* src/app/components/styles/StarRating.module.css */
+.starRating {
+    display: flex;
+  }
+  
+  .starFilled {
+    color: #ffc107;
+    font-size: 1.2rem;
+  }
+  
+  .starEmpty {
+    color: #e0e0e0;
+    font-size: 1.2rem;
+  }

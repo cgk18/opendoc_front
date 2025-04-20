@@ -1,0 +1,104 @@
+/* src/app/components/styles/DoctorCard.module.css */
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .imageContainer {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .doctorImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .doctorName {
+    font-size: 1.25rem;
+    color: #2a70e0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .ratingContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .reviewCount {
+    margin-left: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .reviewSection {
+    margin-bottom: 1rem;
+  }
+  
+  .reviewTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .reviewText {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  .seeMoreReviews {
+    margin-bottom: 1rem;
+  }
+  
+  .seeMoreButton {
+    background: none;
+    border: none;
+    color: #2a70e0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .circleIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #eee;
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .appointmentLink {
+    margin-top: auto;
+    padding-top: 1rem;
+  }
+  
+  .bookLink {
+    color: #2a70e0;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .bookLink:hover {
+    text-decoration: underline;
+  }

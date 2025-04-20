@@ -6,6 +6,8 @@
   padding: 2rem 0;
   max-width: 1200px;
   margin: 0 auto;
+
+  
 }
 
 .titleContainer {
@@ -56,4 +58,63 @@
 
 .searchButton:hover {
   background-color: #3498db;
+}
+
+.additionalInfo {
+  margin: 40px auto;
+  max-width: 95%;
+  width: 900px;
+}
+
+.additionalInfoTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.additionalInfoSubtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.textarea {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: vertical;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.textarea:focus {
+  border-color: var(--primary-color, #0066cc);
+  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+  outline: none;
+}
+
+.textarea::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Ensure these responsive styles match your design system */
+@media (max-width: 768px) {
+  .additionalInfo {
+    margin: 30px auto;
+  }
+  
+  .additionalInfoTitle {
+    font-size: 1.3rem;
+  }
+  
+  .additionalInfoSubtitle {
+    font-size: 0.9rem;
+  }
+  
+  /* Add other responsive styles as needed */
 }

@@ -1,72 +1,157 @@
-"use client";
-
-import { useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './styles/FeatureRanking.module.css';
 
-interface FormData {
-  location: string;
-  insurance: string;
-  language: string;
-  features: Record<number, boolean>;
-  additionalDescription: string;
+interface TradeoffSliderProps {
+  leftOption: string;
+  rightOption: string;
+  value: number;
+  onChange: (value: number) => void;
+  leftIcon?: string;
+  rightIcon?: string;
+  helperText: string;
 }
 
-interface FeatureRankingProps {
-  formData: FormData;
-  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
-}
-
-export default function FeatureRanking({ formData, setFormData }: FeatureRankingProps) {
-  const features = [
-    { id: 1, name: 'Thoroughness of Examination' },
-    { id: 2, name: 'Ability to Answer Questions' },
-    { id: 3, name: 'Clarity of Instruction' },
-    { id: 4, name: 'Provider\'s Follow-Up' },
-    { id: 5, name: 'Amount of Time with Patient' },
-    { id: 6, name: 'Provider\'s Attitude' },
-    { id: 7, name: 'Provider\'s Perceived Outcomes' },
-    { id: 8, name: 'Patient Loyalty to Provider' },
-    { id: 9, name: 'Inclusion in Decisions' },
-    { id: 10, name: 'General Feedback' },
-    { id: 11, name: 'Reputation' }
-  ];
-
-  // Initialize feature selections
-  useEffect(() => {
-    const initialFeatures: Record<number, boolean> = {};
-    features.forEach(feature => {
-      initialFeatures[feature.id] = false;
-    });
-    setFormData(prev => ({...prev, features: initialFeatures}));
-  }, []);
-
-  const toggleFeature = (id: number) => {
-    setFormData(prev => ({
-      ...prev, 
-      features: {
-        ...prev.features,
-        [id]: !prev.features[id]
-      }
-    }));
+const TradeoffSlider: React.FC<TradeoffSliderProps> = ({
+  leftOption,
+  rightOption,
+  value,
+  onChange,
+  leftIcon,
+  rightIcon,
+  helperText,
+}) => {
+  const [hovering, setHovering] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const tooltipTimeoutRef = useRef<number | null>(null);
+  
+  // Calculate percentages for each option based on slider value (0-100)
+  const rightPercentage = value;
+  const leftPercentage = 100 - value;
+  
+  // Generate tooltip text based on value
+  const getTooltipText = () => {
+    if (value < 50) {
+      return `${leftPercentage}% ${leftOption}, ${rightPercentage}% ${rightOption}`;
+    } else if (value > 50) {
+      return `${leftPercentage}% ${leftOption}, ${rightPercentage}% ${rightOption}`;
+    }
+    return `50% ${leftOption}, 50% ${rightOption}`;
   };
 
+  const handleMouseDown = () => {
+    // Clear any existing timeout when user starts dragging
+    if (tooltipTimeoutRef.current) {
+      window.clearTimeout(tooltipTimeoutRef.current);
+      tooltipTimeoutRef.current = null;
+    }
+    setShowTooltip(false);
+  };
+
+  const handleMouseUp = () => {
+    // Show tooltip when user releases the slider
+    setShowTooltip(true);
+    
+    // Hide tooltip after 2 seconds
+    tooltipTimeoutRef.current = window.setTimeout(() => {
+      setShowTooltip(false);
+    }, 2000);
+  };
+
+  // Clean up timeout on unmount
+  React.useEffect(() => {
+    return () => {
+      if (tooltipTimeoutRef.current) {
+        window.clearTimeout(tooltipTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className={styles.featureRanking}>
-      <h2>Rank the following features:</h2>
-      <div className={styles.featureList}>
-        {features.map((feature) => (
-          <div key={feature.id} className={styles.featureItem}>
-            <div className={styles.featureNumber}>{feature.id}</div>
-            <div className={styles.featureName}>{feature.name}</div>
-            <input 
-              type="checkbox"
-              checked={formData.features[feature.id] || false}
-              onChange={() => toggleFeature(feature.id)}
-              className={styles.checkbox}
-            />
-          </div>
-        ))}
+    <div className={styles.tradeoffContainer}>
+      <div className={styles.sliderLabels}>
+        <div className={styles.labelWithIcon}>
+          {leftIcon && <img src={leftIcon} alt="" className={styles.optionIcon} />}
+          <span className={styles.tradeoffLabel}>{leftOption}</span>
+        </div>
+        <div className={styles.labelWithIcon}>
+          <span className={styles.tradeoffLabel}>{rightOption}</span>
+          {rightIcon && <img src={rightIcon} alt="" className={styles.optionIcon} />}
+        </div>
+      </div>
+      
+      <div className={styles.sliderWrapper}>
+        <div 
+          className={styles.sliderContainer}
+          style={{ '--fill-percentage': `${value}%` } as React.CSSProperties}
+        >
+          <input
+            type="range"
+            min="0"
+            max="100"
+            step="1"
+            value={value}
+            onChange={(e) => onChange(parseInt(e.target.value))}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onTouchStart={handleMouseDown}
+            onTouchEnd={handleMouseUp}
+            onMouseEnter={() => setHovering(true)}
+            onMouseLeave={() => setHovering(false)}
+            className={`${styles.slider} ${hovering ? styles.sliderHover : ''}`}
+            aria-label={`Choose between ${leftOption} and ${rightOption}`}
+          />
+          
+          {showTooltip && (
+            <div className={styles.valueTooltip} style={{ left: `${value}%` }}>
+              {getTooltipText()}
+            </div>
+          )}
+        </div>
+      </div>
+      
+      <p className={styles.helperText}>{helperText}</p>
+    </div>
+  );
+};
+
+const FeatureRanking: React.FC = () => {
+  const [warmVsPrompt, setWarmVsPrompt] = useState(25);
+  const [inDepthVsEfficient, setInDepthVsEfficient] = useState(50);
+  const [closeVsFullService, setCloseVsFullService] = useState(50);
+
+  return (
+    <div className={styles.featureRankingWrapper}>
+      <div className={styles.rankingContainer}>
+        <h2 className={styles.rankingTitle}>What matters most to you?</h2>
+        
+        <div className={styles.tradeoffsSection}>
+          <TradeoffSlider
+            leftOption="Warm & Caring"
+            rightOption="Prompt & On-Time"
+            value={warmVsPrompt}
+            onChange={setWarmVsPrompt}
+            helperText="Choose between a provider with empathetic bedside manner or one who prioritizes punctuality."
+          />
+          
+          <TradeoffSlider
+            leftOption="In-Depth Evaluation"
+            rightOption="Efficient Check-Up"
+            value={inDepthVsEfficient}
+            onChange={setInDepthVsEfficient}
+            helperText="Balance between comprehensive examinations or quicker, focused appointments."
+          />
+          
+          <TradeoffSlider
+            leftOption="Close-to-Home Care"
+            rightOption="Full-Service Facilities"
+            value={closeVsFullService}
+            onChange={setCloseVsFullService}
+            helperText="Decide between nearby convenience or comprehensive facilities with more services."
+          />
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default FeatureRanking;

@@ -1,4 +1,3 @@
-// src/app/page.tsx
 "use client";
 
 import { useState } from 'react';
@@ -40,17 +39,21 @@ export default function Home() {
 
       <SearchForm formData={formData} setFormData={setFormData} />
       
-      <FeatureRanking formData={formData} setFormData={setFormData} />
+      <FeatureRanking />
       
       <div className={styles.additionalInfo}>
-        <h2>Additional descriptions:</h2>
+        <h2 className={styles.additionalInfoTitle}>Tell us what you're looking for!</h2>
+          <p className={styles.additionalInfoSubtitle}>
+            Describe your ideal doctor, specific needs, or any preferences not covered above.
+          </p>
         <textarea 
-          placeholder="type here..."
+          placeholder="Examples: 'I need a pediatrician who is good with anxious children', 'Looking for a specialist in sports injuries who offers weekend appointments', 'I prefer a female doctor who speaks Spanish'..."
           value={formData.additionalDescription}
           onChange={(e) => setFormData({...formData, additionalDescription: e.target.value})}
           className={styles.textarea}
-        />
-      </div>
+          rows={5}
+      />
+  </div>
       
       <button className={styles.searchButton} onClick={handleSearch}>
         SEARCH

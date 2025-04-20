@@ -1,9 +1,17 @@
 /* src/app/globals.css */
 :root {
-  --primary-color: #87CEFA;
+  --primary-color: #0066cc;
+  --primary-light: #a7d1f1;
   --text-color: #000;
   --background-color: #fff;
   --accent-color: #3498db;
+  
+  /* Slider variables */
+  --track-height: 10px;
+  --thumb-size: 24px;
+  --thumb-active-size: 28px;
+  --track-border-radius: 6px;
+  --animation-timing: 150ms ease-out;
 }
 
 * {
