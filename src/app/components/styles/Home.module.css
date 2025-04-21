@@ -1,31 +1,32 @@
 /* src/app/styles/Home.module.css */
 .main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 0;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-
-  
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .titleContainer {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 40px;
 }
 
 .title {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.emphasis {
-  font-weight: bold;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
 .subtitle {
   font-size: 1.2rem;
+  color: #4a5568;
+}
+
+.emphasis {
+  color: #2b6cb0;
 }
 
 .additionalInfo {
@@ -102,8 +103,62 @@
   font-style: italic;
 }
 
+.resultsContainer {
+  margin-top: 40px;
+}
+
+.resultsContainer h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #2d3748;
+}
+
+.doctorGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.doctorCard {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.doctorCard:hover {
+  transform: translateY(-4px);
+}
+
+.doctorCard h3 {
+  font-size: 1.2rem;
+  color: #2b6cb0;
+  margin-bottom: 10px;
+}
+
+.doctorCard p {
+  margin: 8px 0;
+  color: #4a5568;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
 /* Ensure these responsive styles match your design system */
 @media (max-width: 768px) {
+  .main {
+    padding: 15px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .doctorGrid {
+    grid-template-columns: 1fr;
+  }
+  
   .additionalInfo {
     margin: 30px auto;
   }

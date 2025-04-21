@@ -1,29 +1,197 @@
 /* src/app/components/styles/SearchResults.module.css */
 .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  color: #2d3748;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #4299e1;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.backButton:hover {
+  background-color: #3182ce;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #4a5568;
+}
+
+.error {
+  text-align: center;
+  padding: 40px;
+  color: #e53e3e;
+}
+
+.noResults {
+  text-align: center;
+  padding: 40px;
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.doctorCard {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.doctorCard:hover {
+  transform: translateY(-4px);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.cardHeader h2 {
+  font-size: 1.4rem;
+  color: #2b6cb0;
+  margin: 0;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.starFilled {
+  color: #f6e05e;
+}
+
+.starEmpty {
+  color: #e2e8f0;
+}
+
+.ratingText {
+  margin-left: 4px;
+  color: #4a5568;
+  font-size: 0.9rem;
+}
+
+.specialty,
+.address,
+.summary {
+  margin-bottom: 12px;
+  color: #4a5568;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.reviews {
+  margin-top: 16px;
+}
+
+.reviews ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+.reviews li {
+  background: #f7fafc;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #4a5568;
+  font-style: italic;
+}
+
+.viewProfileButton {
+  width: 100%;
+  padding: 12px;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background-color 0.2s;
+}
+
+.viewProfileButton:hover {
+  background-color: #3182ce;
+}
+
+.missingInsurance {
+  margin-top: 40px;
+}
+
+.missingInsurance h3 {
+  font-size: 1.4rem;
+  color: #2d3748;
+  margin-bottom: 20px;
+}
+
+.missingCard {
+  border: 2px solid #e2e8f0;
+}
+
+.insuranceNote {
+  background: #fff5f5;
+  color: #c53030;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
   }
-  
-  .main {
-    padding: 2rem 0;
-  }
-  
-  .title {
-    font-size: 2.5rem;
+
+  .header {
+    flex-direction: column;
+    gap: 16px;
     text-align: center;
-    margin-bottom: 2rem;
   }
-  
+
   .resultsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr;
   }
-  
-  @media (max-width: 768px) {
-    .resultsGrid {
-      grid-template-columns: 1fr;
-    }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
   }
+}

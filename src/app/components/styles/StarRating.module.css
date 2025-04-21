@@ -1,0 +1,17 @@
+.starRating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.starFilled {
+  color: #FFD700; /* Gold color for filled stars */
+  font-size: 20px;
+  cursor: default;
+}
+
+.starEmpty {
+  color: #D3D3D3; /* Light gray for empty stars */
+  font-size: 20px;
+  cursor: default;
+} 

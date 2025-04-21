@@ -1,28 +1,209 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.searchContainer {
+  padding: 20px;
+}
+
 .searchForm {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.basicFields {
+  background-color: #e6f2fa;
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.inputFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a202c;
+}
+
+.formGroup input {
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  background: white;
+}
+
+.formGroup input:disabled {
+  background: #f7fafc;
+  color: #4a5568;
+}
+
+.preferencesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.preferencesSection h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0;
+}
+
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sliderLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #4299e1 50%, #e2e8f0 50%);
+  border-radius: 2px;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border: 2px solid #4299e1;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border: 2px solid #4299e1;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sliderDescription {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.additionalDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.additionalDescription h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0;
+}
+
+.additionalDescription textarea {
+  width: 100%;
+  height: 100px;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 14px;
+  resize: vertical;
+  font-family: inherit;
+  background: white;
+}
+
+.examplesText {
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+}
+
+.error {
+  color: #e53e3e;
+  font-size: 14px;
+  padding: 8px 12px;
+  background-color: #fff5f5;
+  border-radius: 4px;
+  border: 1px solid #feb2b2;
+}
+
+.submitContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.searchButton {
+  padding: 10px 24px;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  align-self: flex-end;
+}
+
+.searchButton:hover {
+  background-color: #3182ce;
+}
+
+.searchButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .inputFields {
+    grid-template-columns: 1fr;
+  }
+  
+  .basicFields {
+    padding: 20px;
+  }
+  
+  .searchButton {
     width: 100%;
-    max-width: 800px;
-    background-color: #d6eeff;
-    padding: 1rem;
-    border-radius: 4px;
-    margin-bottom: 2rem;
+    align-self: stretch;
   }
-  
-  .formGroup {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  
-  .formGroup label {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-  }
-  
-  .formGroup input {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+}
+
